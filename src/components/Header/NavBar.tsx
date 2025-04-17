@@ -1,6 +1,8 @@
 
 import React from "react";
 import NavItem from "./components/NavItem";
+import Button from "../Ui/Button/Button";
+import { FiPhoneCall } from "react-icons/fi";
 
 export default function NavBar() {
   return (
@@ -24,7 +26,7 @@ export default function NavBar() {
               </a >
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
-              <div className="hidden lg:flex xl:gap-x-8 lg:gap-x-6  lg:justify-center items-center">
+              <div className="hidden lg:flex xl:gap-x-8 lg:gap-x-6  lg:justify-center items-center me-12">
                 {
                   navItems.map((navItem)=> {
                     return <NavItem key={navItem.name} name={navItem.name} route={navItem.href} withDropDown={navItem.withDropDown}/>
@@ -32,6 +34,7 @@ export default function NavBar() {
                 }
               
               </div>
+              <Button name={"Book a Call"}  icon={<FiPhoneCall size={22}/>} onClick={()=>console.log("first")}/>
             </div>
           </nav>
         </>
