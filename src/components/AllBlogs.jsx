@@ -1,3 +1,4 @@
+import BlogCard from "./Ui/BlogCard/BlogCard";
 import KeywordCapsule from "./Ui/KeywordCapsule/KeywordCapsule";
 
 const AllBlogs = () => {
@@ -19,6 +20,18 @@ const AllBlogs = () => {
             />
           ))}
       
+
+<div className="grid grid-cols-3 gap-[32px]">
+{
+
+blogCards.map((blogCard)=> <BlogCard key={blogCard.id} blogCard={blogCard}/>)
+
+}
+  </div>
+
+
+
+
       </div>
     </div>
   );
@@ -58,3 +71,40 @@ const keywordsArr = [
     count: 5,
   },
 ];
+
+const blogCards = [
+  {
+    id: 1,
+    name: "blog1"
+  }
+  ,
+  {
+    id: 1,
+    name: "blog1"
+  }
+  ,
+  {
+    id: 1,
+    name: "blog1"
+  }
+  ,
+  {
+    id: 1,
+    name: "blog1"
+  }
+  ,
+  {
+    id: 1,
+    name: "blog1"
+  }
+  ,
+  {
+    id: 1,
+    name: "blog1"
+  }
+  ,
+  {
+    id: 1,
+    name: "blog1"
+  }
+]
