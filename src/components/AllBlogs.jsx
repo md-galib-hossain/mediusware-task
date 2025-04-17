@@ -4,26 +4,26 @@ import BlogCard from "./Ui/BlogCard/BlogCard";
 import KeywordCapsule from "./Ui/KeywordCapsule/KeywordCapsule";
 
 const AllBlogs = () => {
-const axios = useAxiosInstance()
-const [loading,setLoading]= useState(false)
-const [blogs,setBlogs]=useState([])
-useEffect(()=>{
-axios.get()
-async function getBlogs() {
-  setLoading(true);
-  try {
-    const { data } = await axios.get();
-    setBlogs(data);
-  } catch (error) {
-    console.error("Error fetching assets:", error); 
-  } finally {
-    setLoading(false);
-  }
-}
-getBlogs();
-},[])
+  const axios = useAxiosInstance();
+  const [loading, setLoading] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    axios.get();
+    async function getBlogs() {
+      setLoading(true);
+      try {
+        const { data } = await axios.get();
+        setBlogs(data);
+      } catch (error) {
+        console.error("Error fetching assets:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getBlogs();
+  }, []);
 
-console.log({blogs})
+  console.log({ blogs });
   return (
     <div className="container">
       <div className="flex items-center justify-center gap-3 md:flex-row flex-col">
@@ -32,28 +32,21 @@ console.log({blogs})
         </p>
       </div>
       <div className="flex items-center flex-wrap justify-center gap-4 sm:py-12 py-5">
-     
-        
-          {keywordsArr.map((keyword) => (
-            <KeywordCapsule
-              key={keyword.id}
-              name={keyword.name}
-              count={keyword.count}
-            />
-          ))}
-      
+        {keywordsArr.map((keyword) => (
+          <KeywordCapsule
+            key={keyword.id}
+            name={keyword.name}
+            count={keyword.count}
+          />
+        ))}
 
-<div className="grid grid-cols-3 gap-[32px]">
-{
-loading ? "Loading...":
-blogCards.map((blogCard)=> <BlogCard key={blogCard.id} blogCard={blogCard}/>)
-
-}
-  </div>
-
-
-
-
+        <div className="grid grid-cols-3 gap-[32px]">
+          {loading
+            ? "Loading..."
+            : blogCards.map((blogCard) => (
+                <BlogCard key={blogCard.id} blogCard={blogCard} />
+              ))}
+        </div>
       </div>
     </div>
   );
@@ -65,7 +58,6 @@ const keywordsArr = [
   {
     id: 1,
     name: "All",
-    
   },
   {
     id: 2,
@@ -97,36 +89,30 @@ const keywordsArr = [
 const blogCards = [
   {
     id: 1,
-    name: "blog1"
-  }
-  ,
+    name: "blog1",
+  },
   {
     id: 1,
-    name: "blog1"
-  }
-  ,
+    name: "blog1",
+  },
   {
     id: 1,
-    name: "blog1"
-  }
-  ,
+    name: "blog1",
+  },
   {
     id: 1,
-    name: "blog1"
-  }
-  ,
+    name: "blog1",
+  },
   {
     id: 1,
-    name: "blog1"
-  }
-  ,
+    name: "blog1",
+  },
   {
     id: 1,
-    name: "blog1"
-  }
-  ,
+    name: "blog1",
+  },
   {
     id: 1,
-    name: "blog1"
-  }
-]
+    name: "blog1",
+  },
+];
