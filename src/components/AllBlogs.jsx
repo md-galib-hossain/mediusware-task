@@ -1,7 +1,29 @@
+import { useEffect, useState } from "react";
+import useAxiosInstance from "../lib";
 import BlogCard from "./Ui/BlogCard/BlogCard";
 import KeywordCapsule from "./Ui/KeywordCapsule/KeywordCapsule";
 
 const AllBlogs = () => {
+const axios = useAxiosInstance()
+const [loading,setLoading]= useState(false)
+const [blogs,setBlogs]=useState([])
+useEffect(()=>{
+axios.get()
+async function getBlogs() {
+  setLoading(true);
+  try {
+    const { data } = await axios.get();
+    setBlogs(data);
+  } catch (error) {
+    console.error("Error fetching assets:", error); 
+  } finally {
+    setLoading(false);
+  }
+}
+getBlogs();
+},[])
+
+console.log({blogs})
   return (
     <div className="container">
       <div className="flex items-center justify-center gap-3 md:flex-row flex-col">
@@ -23,7 +45,7 @@ const AllBlogs = () => {
 
 <div className="grid grid-cols-3 gap-[32px]">
 {
-
+loading ? "Loading...":
 blogCards.map((blogCard)=> <BlogCard key={blogCard.id} blogCard={blogCard}/>)
 
 }
